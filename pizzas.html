@@ -1,0 +1,599 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzas - Pizzería ABCG</title>
+    <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/location-dialog.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4iE2xVSpkLLOXoyqT-RuPwURN3dd8Cqc&libraries=geometry"></script>
+    <script src="js/location-service.js" defer></script>
+    <script src="js/maps-service.js" defer></script>
+    <script src="js/delivery-form.js" defer></script>
+            <!-- SCRIPT PARA FUNCIONALIDAD DE PESTAÑAS -->
+    <script src="js/pizzas.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/menu-tabs.js" defer></script>
+    <script src="js/cart.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>                <li class="mobile-toggle">
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                </li>
+                <li><a href="index.html" class="nav-logo"><img src="imagenes_menu/images.jpeg" alt="Logo de Pizzería ABCG" class="logo"></a></li>
+                <li><a href="index.html#menu" class="nav-menu">Menú</a></li>
+                <li><a href="promos.html" class="nav-menu">Promos</a></li>
+                <li><a href="ubicacion.html" class="nav-menu">Ubicación</a></li>
+                <div class="nav-right">
+                    <a href="#carrito" class="nav-carrito">C </a>
+                </div>
+            </ul>
+            <div class="mobile-dropdown hidden" id="mobile-dropdown-menu">
+                <a href="index.html#menu" class="mobile-dropdown-link">Menu</a>
+                <a href="promos.html" class="mobile-dropdown-link">Promos</a>
+                <a href="ubicacion.html" class="mobile-dropdown-link">Ubicacion</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Barra de navegación secundaria para secciones -->
+    <nav class="submenu-nav">
+        <ul class="submenu-container">
+            <li><a href="pizzas.html" class="submenu-link active">Pizzas</a></li>
+            <li><a href="pastas.html" class="submenu-link">Pastas</a></li>
+            <li><a href="calzones.html" class="submenu-link">Calzone</a></li>
+            <li><a href="alitas_y_cryspy.html" class="submenu-link">Alitas</a></li>
+            <li><a href="hamburguesas.html" class="submenu-link">Hamburguesas</a></li>
+            <li><a href="hotdog.html" class="submenu-link">Hot Dogs</a></li>
+            <li><a href="ensaladas.html" class="submenu-link">Ensaladas</a></li>
+            <li><a href="snacks.html" class="submenu-link">Snacks</a></li>
+            <li><a href="postres.html" class="submenu-link">Postres</a></li>
+            <li><a href="bebidas.html" class="submenu-link">Bebidas</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========================================
+         SECCIÓN PRINCIPAL DE PIZZAS
+         ======================================== -->
+    <main class="contenedor">
+        <h1> Pizzas </h1>
+
+        <div class="hero-center">
+            <div class="line left"></div>
+            <div class="cta">
+                <button class="btn btn-left" id="btn-domicilio">A domicilio</button>
+                <span class="or">o</span>
+                <button class="btn btn-right" id="btn-sucursal">Recoger</button>
+            </div>
+            <div class="line right"></div>
+        </div>
+
+        <!-- ========================================
+             PESTAÑAS DE NAVEGACIÓN
+             ======================================== -->
+        <div class="pizza-tabs">
+            <button class="tab-btn active" data-tab="clasicas">Clásicas</button>
+            <button class="tab-btn" data-tab="especiales">Especiales</button>
+        </div>
+
+       
+        <!-- ========================================
+             SECCIÓN: PIZZAS CLÁSICAS
+             ======================================== -->
+        <div class="menu-section-container" id="clasicas-section">
+            <h2 class="section-title">Combinaciones Clásicas</h2>
+            <section class="menu-section-grid">
+                
+                <!-- Pizza Hawaiana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/hawaina.jpg" alt="Pizza Hawaiana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Hawaiana</h3>
+                        <p class="item-description">Tocino, piña y jamón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Mexicana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                       <img src="pizzas/pizzas_clasicas/mexicana.jpg" alt="Pizza Mexicana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Mexicana</h3>
+                        <p class="item-description">Chorizo, frijoles y jalapeño</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Vegetariana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/vegetariana.webp" alt="Pizza Vegetariana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Vegetariana</h3>
+                        <p class="item-description">Piña, aceitunas y champiñón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Poblana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/poblana.jpg" alt="Pizza Poblana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Poblana</h3>
+                        <p class="item-description">Pollo, mole poblano y ajonjolí</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Maestra -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/maestra.jpg" alt="Pizza Maestra">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Maestra</h3>
+                        <p class="item-description">Atún, frijoles y jitomate</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Campirana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/campirana.jpg" alt="Pizza Campirana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Campirana</h3>
+                        <p class="item-description">Tocino y jalapeño</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Campesina -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/campesina.jpg" alt="Pizza Campesina">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Campesina</h3>
+                        <p class="item-description">Elote, aguacate y pimiento</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Roast Beef -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/roast_beef.jpg" alt="Pizza Roast Beef">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Roast Beef</h3>
+                        <p class="item-description">Carne de res y 2 vegetales a elegir</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Contry -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/contry.jpg" alt="Pizza Contry">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Contry</h3>
+                        <p class="item-description">Jamón, chorizo y jalapeño</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Alemana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/alemana.jpg" alt="Pizza Alemana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Alemana</h3>
+                        <p class="item-description">Salchicha, mortadela y aceitunas</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Americana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/americana.jpg" alt="Pizza Americana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Americana</h3>
+                        <p class="item-description">Salchicha, morrón y champiñón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Costeña -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/costeña.jpg" alt="Pizza Costeña">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Costeña</h3>
+                        <p class="item-description">Atún y aceitunas</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Gabacha -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/gabacha.jpg" alt="Pizza Gabacha">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Gabacha</h3>
+                        <p class="item-description">Peperoni, piña y champiñón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Europea -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/europea.jpg" alt="Pizza Europea">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Europea</h3>
+                        <p class="item-description">Tocino y salchicha</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Vaquera -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/vaquera.jpg" alt="Pizza Vaquera">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Vaquera</h3>
+                        <p class="item-description">Jamón y champiñón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Italiana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/italiana.jpg" alt="Pizza Italiana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Italiana</h3>
+                        <p class="item-description">Salami, mortadela y champiñón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Campestre -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/campestre.jpg" alt="Pizza Campestre">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Campestre</h3>
+                        <p class="item-description">Elote, jalapeño y aguacate</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza American Hot -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_clasicas/american_hot.jpg" alt="Pizza American Hot">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza American Hot</h3>
+                        <p class="item-description">Peperoni, champiñón y jalapeño</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- ========================================
+             SECCIÓN: PIZZAS ESPECIALES
+             ======================================== -->
+        <div class="menu-section-container hidden" id="especiales-section">
+            <h2 class="section-title"> Combinaciones Especiales</h2>
+            <section class="menu-section-grid">
+
+                <!-- Pizza Carnes Frías -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_carnesfrias.jpg" alt="Pizza Carnes Frías">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Carnes Frías</h3>
+                        <p class="item-description">Salami, mortadela, tocino, chuleta, salchicha, jamón y peperoni</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Loca -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_loca.jpg" alt="Pizza Loca">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Loca</h3>
+                        <p class="item-description">6 ingredientes a elegir</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Frutal -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_frutal.jpg" alt="Pizza Frutal">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Frutal</h3>
+                        <p class="item-description">Fruta en almíbar y naturales</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Capricho -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_capricho.jpg" alt="Pizza Capricho">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Capricho</h3>
+                        <p class="item-description">Chuleta, atún, jitomate, cebolla, elote, champiñón y jalapeño</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Ranchera -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_ranchera.jpg" alt="Pizza Ranchera">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Ranchera</h3>
+                        <p class="item-description">Chuleta ahumada, piña, nuez y pimiento</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Extravagante -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_extravagante.jpg" alt="Pizza Extravagante">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Extravagante</h3>
+                        <p class="item-description">Carne molida, salchicha, jamón, peperoni, champiñón, aceituna, cebolla y pimiento</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Árabe -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_arabe.jpg" alt="Pizza Árabe">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Árabe</h3>
+                        <p class="item-description">Carne árabe y tocino</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Delfín Dorado -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_delfindorado.jpg" alt="Pizza Delfín Dorado">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Delfín Dorado</h3>
+                        <p class="item-description">Frijoles, salami, peperoni y champiñón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza ABC -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_abc.jpg" alt="Pizza ABC">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza ABC</h3>
+                        <p class="item-description">Atún, jamón y champiñón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Steak Pizza -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_steak.jpg" alt="Pizza Steak Pizza">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Steak Pizza</h3>
+                        <p class="item-description">Carne de res sazonada con salsa de tomate</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Suprema -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_suprema.jpg" alt="Pizza Suprema">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Suprema</h3>
+                        <p class="item-description">Peperoni, salchicha, aceitunas, champiñón y pimiento</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Napolitana -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_napolitana.jpg" alt="Pizza Napolitana">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Napolitana</h3>
+                        <p class="item-description">Jamón, salami, mortadela y aceitunas</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Marinera -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_marinera.jpg" alt="Pizza Marinera">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Marinera</h3>
+                        <p class="item-description">Camarón, atún, champiñón y jalapeño</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Martín Pizza -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_pizzamartin.jpg" alt="Pizza Martín Pizza">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Martín Pizza</h3>
+                        <p class="item-description">Tocino, piña, cebolla y champiñón</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Delux -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_deluxe.jpg" alt="Pizza Delux">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Delux</h3>
+                        <p class="item-description">Tocino, chuleta, salami, jamón, cebolla, jitomate y pimiento</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Pizza Vegetariana Especial -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="pizzas/pizzas_especiales/pizza_vegetariana.jpg" alt="Pizza Vegetariana Especial">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pizza Vegetariana Especial</h3>
+                        <p class="item-description">Piña, aceitunas, champiñón, cebolla, elote, morrón y jalapeño</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <div class="modal-overlay hidden" id="pizza-modal-overlay">
+            <div class="wings-modal pizza-config-modal" role="dialog" aria-modal="true" aria-labelledby="pizza-modal-title">
+                <button class="modal-close" id="pizza-modal-close" aria-label="Cerrar ventana">&times;</button>
+
+                <div class="modal-header">
+                    <p class="modal-tag">Personaliza tu pizza</p>
+                    <h2 id="pizza-modal-title">Pizza</h2>
+                    <p class="modal-description" id="pizza-modal-description"></p>
+                </div>
+
+                <form id="pizza-config-form" class="modal-form">
+                    <section class="modal-block">
+                        <div class="modal-block-header">
+                            <h3>Tamaño</h3>
+                            <p>Selecciona un tamaño para calcular el precio base.</p>
+                        </div>
+                        <div class="pizza-choice-grid" id="pizza-size-options"></div>
+                    </section>
+
+                    <section class="modal-block">
+                        <div class="modal-block-header">
+                            <h3>Tipo de orilla</h3>
+                            <p>Selecciona una opción de orilla.</p>
+                        </div>
+                        <div class="pizza-choice-grid" id="pizza-crust-options"></div>
+                    </section>
+
+                        <section class="modal-block">
+                            <div class="modal-block-header">
+                                <h3>Salsa base</h3>
+                                <p>Elige la salsa para tu pizza.</p>
+                            </div>
+                            <div class="pizza-choice-grid" id="pizza-sauce-options"></div>
+                        </section>
+
+                    <section class="modal-block">
+                        <div class="modal-block-header">
+                            <h3>Distribución de sabor</h3>
+                            <p>Selecciona cómo quieres dividir la pizza.</p>
+                        </div>
+
+                        <div class="pizza-half-mode-grid" id="pizza-half-mode-options">
+                            <label class="pizza-half-mode">
+                                <input type="radio" name="pizza-half-mode" value="half">
+                                <span class="pizza-half-mode-ui">
+                                    <span class="pizza-half-icon pizza-half-icon-half" aria-hidden="true"></span>
+                                    <span>Mitad y mitad</span>
+                                </span>
+                            </label>
+
+                            <label class="pizza-half-mode">
+                                <input type="radio" name="pizza-half-mode" value="complete" checked>
+                                <span class="pizza-half-mode-ui">
+                                    <span class="pizza-half-icon pizza-half-icon-complete" aria-hidden="true"></span>
+                                    <span>Pizza completa</span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="half-selector hidden" id="pizza-half-selector-wrap">
+                            <label for="pizza-half-selector" id="pizza-half-selector-label">Elige la segunda mitad</label>
+                            <select id="pizza-half-selector" name="second-half" class="item-select"></select>
+                        </div>
+                    </section>
+
+                    <div class="modal-summary" id="pizza-price-summary"></div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn-add btn-secondary" id="pizza-modal-cancel">Cancelar</button>
+                        <button type="submit" class="btn-add" id="pizza-modal-confirm">Confirmar y agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Marys Pizzas. Todos los derechos reservados.</p>
+        <p><a href="https://wa.me/5212231145730" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Pizzeria ABCG"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:4px;"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.16 1.6 5.98L0 24l6.3-1.65a11.86 11.86 0 0 0 5.77 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.4Zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.22-3.74.98 1-3.65-.24-.37a9.9 9.9 0 0 1-1.52-5.24C2.16 6.43 6.6 2 12.07 2c2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.47-4.44 9.9-9.9 9.9Zm5.43-7.43c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.18.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.48a8.9 8.9 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.24-.24-.58-.49-.5-.68-.5h-.58c-.2 0-.52.07-.8.37-.28.3-1.05 1.03-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.12 3.25 5.13 4.55.72.31 1.29.5 1.73.64.73.23 1.39.2 1.92.12.59-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35Z"></path></svg> +52 1 223 114 5730</a> | <a href="https://www.facebook.com/PizzeriaAbcg/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook Pizzeria ABCG"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:4px;"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12"></path></svg>Facebook</a></p>
+    </footer>
+    
+  
+</body>
+</html>
+
+
+

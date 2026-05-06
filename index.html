@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzería ABCG</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/location-dialog.css">
+
+    <!-- Google Maps API - API KEY TEMPORAL PARA PRUEBA -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4iE2xVSpkLLOXoyqT-RuPwURN3dd8Cqc&libraries=geometry"></script>
+
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/promo-slider.js" defer></script>
+    <script src="js/location-service.js" defer></script>
+    <script src="js/maps-service.js" defer></script>
+    <script src="js/delivery-form.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/maps-test.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>                <li class="mobile-toggle">
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                </li>
+                <li><a href="#inicio" class="nav-logo"><img src="imagenes_menu/images.jpeg" alt="Logo de Pizzería ABCG" class="logo"></a></li>
+                <li><a href="#menu" class="nav-menu">Menú</a></li>
+                <li><a href="promos.html" class="nav-menu">Promos</a></li>
+                <li><a href="ubicacion.html" class="nav-menu">Ubicación</a></li>
+                <div class="nav-right">
+                    <a href="#carrito" class="nav-carrito">C </a>
+                </div>
+            </ul>
+            <div class="mobile-dropdown hidden" id="mobile-dropdown-menu">
+                <a href="index.html#menu" class="mobile-dropdown-link">Menu</a>
+                <a href="promos.html" class="mobile-dropdown-link">Promos</a>
+                <a href="ubicacion.html" class="mobile-dropdown-link">Ubicacion</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Slider de Promociones -->
+    <section id="promos" class="promo-slider-section">
+        <div class="promo-slider">
+            <button class="slider-btn slider-prev" aria-label="Anterior">&#10094;</button>
+
+            <div class="slider-track">
+                <div class="promo-slide active" data-promo-target="promo-2fam">
+                    <img src="imagenes_menu/promos/2fam.jpg" alt="Promo 2 Pizzas Familiares">
+                </div>
+                <div class="promo-slide" data-promo-target="promo-2med">
+                    <img src="imagenes_menu/promos/2med.jpg" alt="Promo 2 Pizzas Medianas">
+                </div>
+                <div class="promo-slide" data-promo-target="promo-comboham">
+                    <img src="imagenes_menu/promos/comboham.jpg" alt="Combo Hamburguesa">
+                </div>
+                <div class="promo-slide" data-promo-target="promo-fam-pep">
+                    <img src="imagenes_menu/promos/fam-pep.jpg" alt="Pizza Familiar Pepperoni">
+                </div>
+                <div class="promo-slide" data-promo-target="promo-fam-queso">
+                    <img src="imagenes_menu/promos/fam-queso.jpg" alt="Pizza Familiar Queso">
+                </div>
+            </div>
+
+            <button class="slider-btn slider-next" aria-label="Siguiente">&#10095;</button>
+
+            <div class="slider-dots">
+                <span class="promo-dot active"></span>
+                <span class="promo-dot"></span>
+                <span class="promo-dot"></span>
+                <span class="promo-dot"></span>
+                <span class="promo-dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <h1>Bienvenido a Marys Pizzas</h1>
+
+        <div class="hero-center">
+            <div class="line left"></div>
+            <div class="cta">
+                <button class="btn btn-left" id="btn-domicilio">A domicilio</button>
+                <span class="or">o</span>
+                <button class="btn btn-right" id="btn-sucursal">Recoger</button>
+            </div>
+            <div class="line right"></div>
+        </div>
+
+        <!-- ===== FASE 1: SELECCIÓN DE UBICACIÓN (SIN CARRITO REQUERIDO) ===== -->
+        <!-- Dialog de Entrega a Domicilio -->
+        <dialog id="dialog-delivery" class="location-dialog">
+            <div class="dialog-header">
+                <h2>📍 Selecciona tu ubicación</h2>
+                <button class="dialog-close" data-close="dialog-delivery" aria-label="Cerrar">&times;</button>
+            </div>
+            <div class="dialog-content">
+                <!-- Pestaña: Mapa -->
+                    <div id="current-tab" class="tab-content active">
+                    <button id="btn-use-current-location" class="btn btn-primary">Usar mi ubicación</button>
+                    <div id="current-location-form" class="current-location-form" style="display: none; margin-top: 16px;">
+                        <p id="current-location-status" class="location-status"></p>
+                        <input type="text" id="detected-address" class="address-input" readonly placeholder="Dirección detectada" />
+                        <div id="current-location-link" class="location-link"></div>
+                    </div>
+                </div>
+
+                <!-- Confirmación de Ubicación Seleccionada -->
+                <div id="location-confirmation" class="location-confirmation" style="display: none;">
+                    <div class="confirm-header">
+                        <h3>📍 Ubicación del cliente</h3>
+                    </div>
+                    <div class="confirm-body">
+                        <!-- Bloque de dirección -->
+                        <div class="location-block">
+                            <p class="location-label">Dirección</p>
+                            <p class="location-value" id="confirm-address"></p>
+                        </div>
+
+                        <!-- Bloque de coordenadas -->
+                        <div class="location-block">
+                            <p class="location-label">Coordenadas</p>
+                            <p class="location-value location-secondary" id="confirm-coords"></p>
+                        </div>
+
+                        <!-- Bloque de cobertura -->
+                        <div class="location-block">
+                            <p class="location-label">Estado de cobertura</p>
+                            <span id="confirm-coverage" class="coverage-badge"></span>
+                        </div>
+
+                        <!-- Nota de cobertura si está fuera -->
+                        <p id="coverage-note" class="coverage-note" style="display: none; margin-top: 12px; padding: 10px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px; color: #856404;"></p>
+
+                        <!-- Referencia para el repartidor -->
+                        <div class="location-block">
+                            <label for="delivery-reference" class="location-label">Referencia para el repartidor</label>
+                            <textarea 
+                                id="delivery-reference" 
+                                class="delivery-reference-input"
+                                placeholder="Ejemplo: Casa blanca con portón negro, junto a una tienda"
+                                rows="3"
+                            ></textarea>
+                        </div>
+
+                        <!-- Link a Google Maps -->
+                        <div id="confirm-location-link" class="location-link" style="margin-top: 12px;"></div>
+                    </div>
+                    <div class="confirm-footer">
+                        <button id="btn-confirm-location" class="btn btn-primary">Confirmar ubicación</button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Dialog de Recoger en Sucursal -->
+        <dialog id="dialog-pickup" class="location-dialog">
+            <div class="dialog-header">
+                <h2>🏪 Selecciona tu sucursal</h2>
+                <button class="dialog-close" data-close="dialog-pickup" aria-label="Cerrar">&times;</button>
+            </div>
+            <div class="dialog-content">
+                <!-- Mapa de Sucursales -->
+                <div id="pickup-map" class="map-container"></div>
+                
+                <!-- Lista de Sucursales -->
+                <div id="branches-list" class="branches-list">
+                    <!-- Se llena dinámicamente desde JavaScript -->
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Toast para mensajes -->
+        <div id="delivery-toast" class="delivery-toast"></div>
+
+        <div class="menu-section-container">
+            <section class="menu-section-grid menu-desktop">
+                <div class="menu-section-card wide">
+                    <a href="pizzas.html" class="menu-section-link"><img src="sec-menu/pizzas.jpg" alt="Pizzas"></a>
+                    <h2 class="menu-section-caption">Pizzas</h2>
+                </div>
+                <div class="menu-section-card wide">
+                    <a href="hamburguesas.html" class="menu-section-link"><img src="sec-menu/hamburguesa.jpg" alt="Hamburguesa"></a>
+                    <h2 class="menu-section-caption">Hamburguesa</h2>
+                </div>
+
+                <div class="menu-section-card wide">
+                    <a href="hotdog.html" class="menu-section-link"><img src="sec-menu/hot-dog-aderezo-tocino.png" alt="Hot Dog"></a>
+                    <h2 class="menu-section-caption">Hot Dog</h2>
+                </div>
+                <div class="menu-section-card wide">
+                    <a href="calzones.html" class="menu-section-link"><img src="sec-menu/calzone.jpg" alt="Calzone"></a>
+                    <h2 class="menu-section-caption">Calzone</h2>
+                </div>
+
+                <div class="menu-section-card wide">
+                    <a href="alitas_y_cryspy.html" class="menu-section-link"><img src="sec-menu/alitas.jpg" alt="Alitas"></a>
+                    <h2 class="menu-section-caption">Alitas</h2>
+                </div>
+                <div class="menu-section-card wide">
+                    <a href="snacks.html" class="menu-section-link"><img src="sec-menu/snacks.jpg" alt="Snacks"></a>
+                    <h2 class="menu-section-caption">Snacks</h2>
+                </div>
+
+                <div class="menu-section-card">
+                    <a href="pastas.html" class="menu-section-link"><img src="sec-menu/pastas.jpeg" alt="Pastas"></a>
+                    <h2 class="menu-section-caption">Pastas</h2>
+                </div>
+                <div class="menu-section-card">
+                    <a href="bebidas.html" class="menu-section-link"><img src="sec-menu/bebidas.jpg" alt="Bebidas"></a>
+                    <h2 class="menu-section-caption">Bebidas</h2>
+                </div>
+                <div class="menu-section-card">
+                    <a href="ensaladas.html" class="menu-section-link"><img src="sec-menu/ensaladas.jpg" alt="Ensaladas"></a>
+                    <h2 class="menu-section-caption">Ensaladas</h2>
+                </div>
+                <div class="menu-section-card">
+                    <a href="postres.html" class="menu-section-link"><img src="sec-menu/postres.jpg" alt="Postres"></a>
+                    <h2 class="menu-section-caption">Postres</h2>
+                </div>
+            </section>
+
+            <!-- secciones del menú en formato horizontal tipo lista (solo celular) -->
+            <section class="menu-category-list menu-mobile">
+                <a href="pizzas.html" class="menu-category-card">
+                    <img src="sec-menu/pizzas.jpg" alt="Pizzas" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Pizzas</h2>
+                        <p class="menu-category-description">Pizzas clásicas y especiales, listas para compartir en cualquier ocasión.</p>
+                    </div>
+                </a>
+
+                <a href="hamburguesas.html" class="menu-category-card">
+                    <img src="sec-menu/hamburguesa.jpg" alt="Hamburguesas" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Hamburguesas</h2>
+                        <p class="menu-category-description">Hamburguesas jugosas con ingredientes frescos y combinaciones irresistibles.</p>
+                    </div>
+                </a>
+
+                <a href="hotdog.html" class="menu-category-card">
+                    <img src="sec-menu/hot-dog-aderezo-tocino.png" alt="Hot Dogs" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Hot Dogs</h2>
+                        <p class="menu-category-description">Hot dogs preparados al momento con toppings clásicos y especiales.</p>
+                    </div>
+                </a>
+
+                <a href="calzones.html" class="menu-category-card">
+                    <img src="sec-menu/calzone.jpg" alt="Calzone" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Calzone</h2>
+                        <p class="menu-category-description">Masa horneada rellena con queso y tus ingredientes favoritos.</p>
+                    </div>
+                </a>
+
+                <a href="alitas_y_cryspy.html" class="menu-category-card">
+                    <img src="sec-menu/alitas.jpg" alt="Alitas" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Alitas</h2>
+                        <p class="menu-category-description">Alitas clásicas y crispy con variedad de salsas no picantes y picantes.</p>
+                    </div>
+                </a>
+
+                <a href="snacks.html" class="menu-category-card">
+                    <img src="sec-menu/snacks.jpg" alt="Snacks" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Snacks</h2>
+                        <p class="menu-category-description">Acompañamientos y antojos rápidos para completar tu pedido.</p>
+                    </div>
+                </a>
+
+                <a href="pastas.html" class="menu-category-card">
+                    <img src="sec-menu/pastas.jpeg" alt="Pastas" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Pastas</h2>
+                        <p class="menu-category-description">Pastas cremosas y tradicionales con sabores caseros para todos.</p>
+                    </div>
+                </a>
+
+                <a href="bebidas.html" class="menu-category-card">
+                    <img src="sec-menu/bebidas.jpg" alt="Bebidas" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Bebidas</h2>
+                        <p class="menu-category-description">Refrescos, aguas y bebidas para acompañar cada comida.</p>
+                    </div>
+                </a>
+
+                <a href="ensaladas.html" class="menu-category-card">
+                    <img src="sec-menu/ensaladas.jpg" alt="Ensaladas" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Ensaladas</h2>
+                        <p class="menu-category-description">Opciones frescas y ligeras con ingredientes balanceados.</p>
+                    </div>
+                </a>
+
+                <a href="postres.html" class="menu-category-card">
+                    <img src="sec-menu/postres.jpg" alt="Postres" class="menu-category-thumb">
+                    <div class="menu-category-content">
+                        <h2 class="menu-category-title">Postres</h2>
+                        <p class="menu-category-description">Dulces opciones para cerrar tu comida con un gran sabor.</p>
+                    </div>
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Marys Pizzas. Todos los derechos reservados.</p>
+        <p><a href="https://wa.me/5212231145730" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Pizzeria ABCG"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:4px;"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.16 1.6 5.98L0 24l6.3-1.65a11.86 11.86 0 0 0 5.77 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.4Zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.22-3.74.98 1-3.65-.24-.37a9.9 9.9 0 0 1-1.52-5.24C2.16 6.43 6.6 2 12.07 2c2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.47-4.44 9.9-9.9 9.9Zm5.43-7.43c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.18.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.48a8.9 8.9 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.24-.24-.58-.49-.5-.68-.5h-.58c-.2 0-.52.07-.8.37-.28.3-1.05 1.03-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.12 3.25 5.13 4.55.72.31 1.29.5 1.73.64.73.23 1.39.2 1.92.12.59-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35Z"></path></svg> +52 1 223 114 5730</a> | <a href="https://www.facebook.com/PizzeriaAbcg/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook Pizzeria ABCG"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:4px;"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12"></path></svg>Facebook</a></p>
+    </footer>
+</body>
+</html>
+
+

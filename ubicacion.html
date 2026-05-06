@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicacion - Pizzeria ABCG</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/location-dialog.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4iE2xVSpkLLOXoyqT-RuPwURN3dd8Cqc&libraries=geometry"></script>
+    <script src="js/location-service.js" defer></script>
+    <script src="js/maps-service.js" defer></script>
+    <script src="js/delivery-form.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/cart.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="mobile-toggle">
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-dropdown-menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                </li>
+                <li><a href="index.html" class="nav-logo"><img src="imagenes_menu/images.jpeg" alt="Logo de Pizzeria ABCG" class="logo"></a></li>
+                <li><a href="index.html#menu" class="nav-menu">Menu</a></li>
+                <li><a href="promos.html" class="nav-menu">Promos</a></li>
+                <li><a href="ubicacion.html" class="nav-menu">Ubicacion</a></li>
+                <div class="nav-right">
+                    <a href="#carrito" class="nav-carrito">C </a>
+                </div>
+            </ul>
+            <div class="mobile-dropdown hidden" id="mobile-dropdown-menu">
+                <a href="index.html#menu" class="mobile-dropdown-link">Menu</a>
+                <a href="promos.html" class="mobile-dropdown-link">Promos</a>
+                <a href="ubicacion.html" class="mobile-dropdown-link">Ubicacion</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor locations-page">
+        <h1>Nuestras sucursales</h1>
+
+        <div class="hero-center">
+            <div class="line left"></div>
+            <div class="cta">
+                <button class="btn btn-left" id="btn-domicilio">A domicilio</button>
+                <span class="or">o</span>
+                <button class="btn btn-right" id="btn-sucursal">Recoger</button>
+            </div>
+            <div class="line right"></div>
+        </div>
+        <p>Selecciona la sucursal mas cercana y abre la ruta en Google Maps.</p>
+
+        <section class="locations-grid" aria-label="Sucursales ABCG">
+            <article class="location-card">
+                <div class="location-map-wrap">
+                    <iframe
+                        class="location-map"
+                        title="Mapa de Pizzas ABCG"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=18.9662384,-97.9076921&z=16&output=embed">
+                    </iframe>
+                </div>
+                <div class="location-copy">
+                    <h2>Pizzas ABCG</h2>
+                    <p class="location-address">Colon Pte 317, San Miguel, 75200 Tepeaca, Pue.</p>
+                    <p class="location-coords">18.9662384, -97.9076921</p>
+                    <a class="btn-add location-link" href="https://maps.app.goo.gl/HEFToaAxwvV6vSxQA" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                </div>
+            </article>
+
+            <article class="location-card">
+                <div class="location-map-wrap">
+                    <iframe
+                        class="location-map"
+                        title="Mapa de Pizzeria Abcg San Hipolito Xochiltenango"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=18.938938,-97.8753187&z=16&output=embed">
+                    </iframe>
+                </div>
+                <div class="location-copy">
+                    <h2>Pizzeria Abcg San Hipolito Xochiltenango</h2>
+                    <p class="location-address">Av. Veracruz 13, Centro, 75215 San Hipolito Xochiltenango, Pue.</p>
+                    <p class="location-coords">18.938938, -97.8753187</p>
+                    <a class="btn-add location-link" href="https://maps.app.goo.gl/khXdystsmSNtywwF7" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                </div>
+            </article>
+
+            <article class="location-card">
+                <div class="location-map-wrap">
+                    <iframe
+                        class="location-map"
+                        title="Mapa de ABCG Wings Snacks and Beer"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=18.958894,-97.903098&z=16&output=embed">
+                    </iframe>
+                </div>
+                <div class="location-copy">
+                    <h2>ABCG Wings Snacks and Beer</h2>
+                    <p class="location-address">Calle 9 Ote. 105, El Santuario, 75200 Tepeaca, Pue.</p>
+                    <p class="location-coords">18.958894, -97.903098</p>
+                    <a class="btn-add location-link" href="https://maps.app.goo.gl/Kh1Fn4QcNbi5uf629" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
+

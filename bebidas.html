@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas - Pizzería ABCG</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/location-dialog.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4iE2xVSpkLLOXoyqT-RuPwURN3dd8Cqc&libraries=geometry"></script>
+    <script src="js/location-service.js" defer></script>
+    <script src="js/maps-service.js" defer></script>
+    <script src="js/delivery-form.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/menu-tabs.js" defer></script>
+    <script src="js/cart.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="mobile-toggle">
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-dropdown-menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                </li>
+                <li><a href="index.html" class="nav-logo"><img src="imagenes_menu/images.jpeg" alt="Logo de Pizzería ABCG" class="logo"></a></li>
+                <li><a href="index.html#menu" class="nav-menu">Menú</a></li>
+                <li><a href="promos.html" class="nav-menu">Promos</a></li>
+                <li><a href="ubicacion.html" class="nav-menu">Ubicación</a></li>
+                <li class="nav-right">
+                    <a href="#carrito" class="nav-carrito">C </a>
+                </li>
+            </ul>
+            <div class="mobile-dropdown hidden" id="mobile-dropdown-menu">
+                <a href="index.html#menu" class="mobile-dropdown-link">Menú</a>
+                <a href="promos.html" class="mobile-dropdown-link">Promos</a>
+                <a href="ubicacion.html" class="mobile-dropdown-link">Ubicación</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Barra de navegación secundaria para secciones -->
+    <nav class="submenu-nav">
+        <ul class="submenu-container">
+            <li><a href="pizzas.html" class="submenu-link">Pizzas</a></li>
+            <li><a href="pastas.html" class="submenu-link">Pastas</a></li>
+            <li><a href="calzones.html" class="submenu-link">Calzone</a></li>
+            <li><a href="alitas_y_cryspy.html" class="submenu-link">Alitas</a></li>
+            <li><a href="hamburguesas.html" class="submenu-link">Hamburguesas</a></li>
+            <li><a href="hotdog.html" class="submenu-link">Hot Dogs</a></li>
+            <li><a href="ensaladas.html" class="submenu-link">Ensaladas</a></li>
+            <li><a href="snacks.html" class="submenu-link">Snacks</a></li>
+            <li><a href="postres.html" class="submenu-link">Postres</a></li>
+            <li><a href="bebidas.html" class="submenu-link active">Bebidas</a></li>
+        </ul>
+    </nav>
+
+        <!-- ========================================
+            SECCIÓN PRINCIPAL DE BEBIDAS
+            ======================================== -->
+    <main class="contenedor">
+        <h1>Bebidas </h1>
+
+        <div class="hero-center">
+            <div class="line left"></div>
+            <div class="cta">
+                <button class="btn btn-left" id="btn-domicilio">A domicilio</button>
+                <span class="or">o</span>
+                <button class="btn btn-right" id="btn-sucursal">Recoger</button>
+            </div>
+            <div class="line right"></div>
+        </div>
+
+        <!-- Tabs: Sin alcohol / Con alcohol -->
+        <div class="pizza-tabs" role="tablist">
+            <button class="tab-btn active" data-target="tab-bebidas">Sin alcohol</button>
+            <button class="tab-btn" data-target="alcoholSection">Con alcohol</button>
+        </div>
+
+           <!-- ========================================
+               SECCIÓN: BEBIDAS (PRINCIPAL)
+               ======================================== -->
+        <div id="tab-bebidas" class="menu-section-container tab-pane active">
+            
+
+            <section class="menu-section-grid">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu\bebidas_s\malteada.jpg" alt="Malteada (chocolate, fresa o vainilla)">
+                    </div>
+                    <div class="item-info">
+                        <h3>Malteada</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$75</p>
+                        <div class="item-options">
+                            <label for="select-malteada">Sabores / Opciones</label>
+                            <select id="select-malteada" name="sabor" class="item-select">
+                                <option value="chocolate">Chocolate</option>
+                                <option value="fresa">Fresa</option>
+                                <option value="vainilla">Vainilla</option>
+                            </select>
+                        </div>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/malteada_especial.jpg" alt="Malteada Especial">
+                    </div>
+                    <div class="item-info">
+                        <h3>Malteada Especial</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$89</p>
+                        <div class="item-options">
+                            <label for="select-malteada-especial">Sabores / Opciones</label>
+                            <select id="select-malteada-especial" name="sabor" class="item-select">
+                                <option value="ferrero">Ferrero</option>
+                                <option value="gansito">Gansito</option>
+                                <option value="capuchino">Capuchino</option>
+                                <option value="oreo">Oreo</option>
+                                <option value="mazapan">Mazapán</option>
+                                <option value="pinguinos">Pingüinos</option>
+                            </select>
+                        </div>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/naranjada_limoda.jpg" alt="Naranjada o Limonada">
+                    </div>
+                    <div class="item-info">
+                        <h3>Naranjada o Limonada</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$55</p>
+                        <div class="item-options">
+                            <label for="select-naranjada">Sabores / Opciones</label>
+                            <select id="select-naranjada" name="sabor" class="item-select">
+                                <option value="naranjada">Naranjada</option>
+                                <option value="limonada">Limonada</option>
+                            </select>
+                        </div>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s\jarra_limonada_naranjada.jpg" alt="Jarra 1L">
+                    </div>
+                    <div class="item-info">
+                        <h3>Jarra de 1L </h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$109</p>
+                        <div class="item-options">
+                            <label for="select-jarra-1l">Sabores / Opciones</label>
+                            <select id="select-jarra-1l" name="sabor" class="item-select">
+                                <option value="naranjada">Naranjada</option>
+                                <option value="limonada">Limonada</option>
+                            </select>
+                        </div>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/capuccino_frio.jpg" alt="Capuccino Frío">
+                    </div>
+                    <div class="item-info">
+                        <h3>Capuccino Frío</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$60</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/coca_lata.jpg" alt="Coca-Cola en lata">
+                    </div>
+                    <div class="item-info">
+                        <h3>Coca-Cola en lata</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$35</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/coca_600.webp" alt="Coca-Cola 600 ml">
+                    </div>
+                    <div class="item-info">
+                        <h3>Coca-Cola 600 ml</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$40</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/coca_2l.webp" alt="Coca-Cola 2 L">
+                    </div>
+                    <div class="item-info">
+                        <h3>Coca-Cola 2 L</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$65</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/jarritos.webp" alt="Jarrito">
+                    </div>
+                    <div class="item-info">
+                        <h3>Jarrito</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$50</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/refrescos_lata.webp" alt="Refresco en lata de sabor">
+                    </div>
+                    <div class="item-info">
+                        <h3>Refresco en lata de sabor</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$25</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/agua_natural.webp" alt="Agua natural (1L)">
+                    </div>
+                    <div class="item-info">
+                        <h3>Agua natural (embotellada 1L)</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$25</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/arizona.webp" alt="Arizona">
+                    </div>
+                    <div class="item-info">
+                        <h3>Arizona</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$35</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/jugo.webp" alt="Jugo">
+                    </div>
+                    <div class="item-info">
+                        <h3>Jugo</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$30</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/bost.webp"  alt="Bost">
+                    </div>
+                    <div class="item-info">
+                        <h3>Bost</h3>
+                        <p class="item-description">&nbsp;</p>
+                        <p class="item-price">$35</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/capuccino_caliente.webp" alt="Capuccino">
+                    </div>
+                    <div class="item-info">
+                        <h3>Capuccino</h3>
+                        <p class="item-price">$45</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/vaso_leche.webp" alt="Vaso con leche">
+                    </div>
+                    <div class="item-info">
+                        <h3>Vaso con leche</h3>
+                        <p class="item-price">$30</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/chocolate_caliente.webp" alt="Chocolate caliente">
+                    </div>
+                    <div class="item-info">
+                        <h3>Chocolate caliente</h3>
+                        <p class="item-price">$35</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+                     <!-- ========================================
+                             SECCIÓN: BEBIDAS CON ALCOHOL (oculta por defecto)
+                             ======================================== -->
+           <div id="alcoholSection" class="menu-section-container hidden">
+                            <h2 class="section-title">Bebidas con Alcohol</h2>
+            
+                        <!-- SUBSECCIÓN: Micheladas -->
+                        <h3 class="subsection-title">Micheladas</h3>
+            <section class="menu-section-grid">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada_original.webp" alt="Michelada Original">
+                    </div>
+                    <div class="item-info">
+                        <h3>Michelada Original</h3>
+                        <p class="item-description">Cerveza con salsas y especias</p>
+                        <p class="item-price">$60</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada_sabor.webp" alt="Michelada de Sabor">
+                    </div>
+                    <div class="item-info">
+                        <h3>Michelada de Sabor</h3>
+                       
+                        <p class="item-price">$65</p>
+                        <div class="item-options">
+                            <label for="select-michelada-sabor">Sabores / Opciones</label>
+                            <select id="select-michelada-sabor" name="sabor" class="item-select">
+                                <option value="tamarindo">Tamarindo</option>
+                                <option value="fresa">Fresa</option>
+                                <option value="mango">Mango</option>
+                                <option value="chamoy">Chamoy</option>
+                            </select>
+                        </div>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada_clamato_camaron.webp" alt="Michelada Clamato">
+                    </div>
+                    <div class="item-info">
+                        <h3>Michelada Clamato y Camarón</h3>
+                        <p class="item-description">Con clamato y camarones</p>
+                        <p class="item-price">$80</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUBSECCIÓN: Cervezas -->
+            <h3 class="subsection-title">Cervezas</h3>
+            <section class="menu-section-grid">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada/pylsner_indio.webp" alt="Pilsner Indio">
+                    </div>
+                    <div class="item-info">
+                        <h3>Pilsner Indio</h3>
+                        <p class="item-description">Cerveza mexicana clásica</p>
+                        <p class="item-price">$35</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada/sol.webp" alt="Sol">
+                    </div>
+                    <div class="item-info">
+                        <h3>Sol</h3>
+                        <p class="item-description">Cerveza mexicana</p>
+                        <p class="item-price">$35</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada/carta_blanca.webp" alt="Carta Blanca">
+                    </div>
+                    <div class="item-info">
+                        <h3>Carta Blanca</h3>
+                        <p class="item-description">Cerveza mexicana premium</p>
+                        <p class="item-price">$35</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada/tecate_light.webp" alt="Tecate">
+                    </div>
+                    <div class="item-info">
+                        <h3>Tecate Original / Tecate Light</h3>
+                        <p class="item-description">Cerveza mexicana</p>
+                        <p class="item-price">$35</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada/xx_ambar.webp" alt="XX">
+                    </div>
+                    <div class="item-info">
+                        <h3>XX Lager / XX Ámbar</h3>
+                        <p class="item-description">Cerveza mexicana</p>
+                        <p class="item-price">$45</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada/heineken.jpg" alt="Heineken">
+                    </div>
+                    <div class="item-info">
+                        <h3>Heineken</h3>
+                        <p class="item-description">Cerveza holandesa</p>
+                        <p class="item-price">$45</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="imagenes_menu/bebidas_s/michelada/bohemia_oscura.webp" alt="Bohemia Oscura">
+                    </div>
+                    <div class="item-info">
+                        <h3>Bohemia Oscura</h3>
+                        <p class="item-description">Cerveza mexicana oscura</p>
+                        <p class="item-price">$49</p>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </div>
+            </section>
+
+         
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Marys Pizzas. Todos los derechos reservados.</p>
+        <p><a href="https://wa.me/5212231145730" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Pizzeria ABCG"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:4px;"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.16 1.6 5.98L0 24l6.3-1.65a11.86 11.86 0 0 0 5.77 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.4Zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.22-3.74.98 1-3.65-.24-.37a9.9 9.9 0 0 1-1.52-5.24C2.16 6.43 6.6 2 12.07 2c2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.47-4.44 9.9-9.9 9.9Zm5.43-7.43c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.18.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.48a8.9 8.9 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.24-.24-.58-.49-.5-.68-.5h-.58c-.2 0-.52.07-.8.37-.28.3-1.05 1.03-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.12 3.25 5.13 4.55.72.31 1.29.5 1.73.64.73.23 1.39.2 1.92.12.59-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35Z"></path></svg> +52 1 223 114 5730</a> | <a href="https://www.facebook.com/PizzeriaAbcg/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook Pizzeria ABCG"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:4px;"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12"></path></svg>Facebook</a></p>
+    </footer>
+
+    <script src="js/bebidas.js"></script>
+</body>
+</html>
+
+
+
