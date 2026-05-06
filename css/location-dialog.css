@@ -1,0 +1,559 @@
+/* ===================================
+   ESTILOS PARA DIÁLOGOS Y MAPAS - FASE 1
+   =================================== */
+
+/* Dialog Containers */
+dialog.location-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    z-index: 1000;
+    overflow: auto;
+}
+
+dialog.location-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    background: #fafafa;
+}
+
+.dialog-header h2 {
+    margin: 0;
+    color: #003d82;
+    font-size: 1.5rem;
+}
+
+.dialog-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.dialog-close:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #000;
+}
+
+.dialog-content {
+    padding: 25px;
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+    background: #f5f5f5;
+}
+
+.map-instructions {
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border-left: 4px solid #DC3545;
+}
+
+/* Tabs Navigation */
+.location-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #999;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tab-btn:hover {
+    color: #003d82;
+}
+
+.tab-btn.active {
+    color: #DC3545;
+    border-bottom-color: #DC3545;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Search Input */
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #DC3545;
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+}
+
+.search-results {
+    margin-top: 15px;
+}
+
+.search-result {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.search-result p {
+    margin: 8px 0;
+    color: #333;
+    text-align: left;
+}
+
+.coverage-status {
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.coverage-status.in-coverage {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.coverage-status.out-coverage {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.coverage-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.coverage-badge.in-coverage {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.coverage-badge.out-coverage {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* Location Confirmation */
+.location-confirmation {
+    margin-top: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.confirm-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #003d82 0%, #0052b3 100%);
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
+}
+
+.confirm-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.confirm-body {
+    margin-bottom: 0;
+    padding: 20px;
+    background: white;
+    border-radius: 0;
+}
+
+.confirm-body p {
+    margin: 0;
+    color: #333;
+    text-align: left;
+}
+
+.confirm-footer {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding: 16px 20px;
+    background: #f8f9fa;
+    border-radius: 0 0 8px 8px;
+    border-top: 1px solid #e8e8e8;
+}
+
+/* Location Blocks - Diseño moderno */
+.location-block {
+    padding: 16px;
+    background: #f9fafb;
+    border: 1px solid #e0e0e0;
+    border-left: 4px solid #DC3545;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+.location-block:hover {
+    border-left-color: #003d82;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.location-block:last-of-type {
+    margin-bottom: 0;
+}
+
+.location-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 8px 0;
+    display: block;
+}
+
+.location-value {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #003d82;
+    margin: 0;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.location-secondary {
+    font-size: 0.9rem;
+    color: #999;
+    font-weight: 400;
+    font-family: 'Courier New', monospace;
+}
+
+/* Textarea para referencia del repartidor */
+.delivery-reference-input {
+    width: 100%;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    min-height: 80px;
+}
+
+.delivery-reference-input:focus {
+    outline: none;
+    border-color: #DC3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.delivery-reference-input::placeholder {
+    color: #bbb;
+}
+
+/* Branches List */
+.branches-list {
+    display: grid;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.branch-item {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.branch-item:hover {
+    border-color: #DC3545;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.15);
+}
+
+.branch-item.selected {
+    border-color: #28a745;
+    background: #f0fff4;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+}
+
+.branch-item.selected::before {
+    content: '✓';
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    background: #28a745;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.branch-info h3 {
+    margin: 0 0 8px 0;
+    color: #003d82;
+    font-size: 1.1rem;
+}
+
+.branch-info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.branch-details {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.btn-select-branch {
+    padding: 10px 20px;
+    background: #DC3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-select-branch:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.btn-select-location {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #DC3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.btn-select-location:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: #DC3545;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+    padding: 12px 24px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #e8e8e8;
+    border-color: #999;
+}
+
+.location-status {
+    margin-top: 15px;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border-left: 4px solid #DC3545;
+    color: #333;
+    text-align: left;
+}
+
+.location-status p {
+    margin: 5px 0;
+    text-align: left;
+}
+
+.error {
+    color: #c62828;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+    dialog.location-dialog {
+        width: 95%;
+        max-height: 85vh;
+    }
+
+    .map-container {
+        height: 300px;
+    }
+
+    .branch-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-select-branch {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .confirm-footer {
+        flex-direction: column;
+    }
+
+    .confirm-footer .btn {
+        width: 100%;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+    dialog.location-dialog {
+        width: 95%;
+        max-height: 95vh;
+        border-radius: 12px 12px 0 0;
+        top: auto;
+        bottom: 0;
+        transform: translateX(-50%);
+    }
+
+    .dialog-header {
+        padding: 15px;
+    }
+
+    .dialog-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .dialog-content {
+        padding: 15px;
+    }
+
+    .map-container {
+        height: 250px;
+    }
+
+    .location-tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .branch-info h3 {
+        font-size: 1rem;
+    }
+
+    .branch-item {
+        padding: 12px;
+    }
+
+    .confirm-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .confirm-footer .btn-primary,
+    .confirm-footer .btn-secondary {
+        width: 100%;
+    }
+}

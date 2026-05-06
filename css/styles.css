@@ -1,0 +1,473 @@
+/* ===================================
+   ESTILOS GLOBALES Y RESET
+   =================================== */
+
+* {
+ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--page-bg);
+}
+
+/* ===================================
+   VARIABLES DE COLOR (ROOT)
+   =================================== */
+
+:root{
+    /* Paleta de colores */
+    --header-blue: #2F4F2F;
+    --accent-red: #D62828;
+    --pizza-yellow: #FFC300;
+    --page-bg: #fff;
+    --main-bg: #ffffff;
+    --footer-bg: #EAD5B6;
+    --text: #333333;
+    --black: #000;
+    --hover-dark: rgba(44,44,44,0.6);
+}
+
+/* ===================================
+   ESTILOS DE HEADER Y NAVEGACIÓN
+   =================================== */
+
+header {
+    background-color: var(--header-blue);
+    color: white;
+    padding: 0 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    background-color: var(--header-blue);
+    padding: 0;
+    letter-spacing: 0.1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.mobile-toggle {
+    display: none;
+}
+
+.hamburger-btn {
+    display: none;
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    padding: 12px;
+}
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 3px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hamburger-icon::before {
+    transform: translateY(-7px);
+}
+
+.hamburger-icon::after {
+    transform: translateY(5px);
+}
+
+.hamburger-btn.open .hamburger-icon {
+    background: transparent;
+}
+
+.hamburger-btn.open .hamburger-icon::before {
+    transform: translateY(0) rotate(45deg);
+}
+
+.hamburger-btn.open .hamburger-icon::after {
+    transform: translateY(-2px) rotate(-45deg);
+}
+
+.mobile-dropdown {
+    display: none;
+    background: var(--header-blue);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-dropdown-link {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dropdown-link:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.logo {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+nav li:first-child {
+    margin-right: 30px;
+}
+
+nav li:nth-child(2),
+nav li:nth-child(3),
+nav li:nth-child(4) {
+    margin-right: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0;
+}
+
+.nav-logo {
+    padding: 15px 15px;
+    z-index: 2;
+}
+
+.nav-menu {
+    padding: 30px 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-menu:hover {
+    color: white;
+    background-color: var(--hover-dark);
+}
+
+nav a:hover {
+    color: white;
+    background-color: var(--hover-dark);
+    border-radius: 0;
+}
+
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.nav-right a {
+    background-color: transparent;
+    border-radius: 0;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-login {
+    padding: 28px 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.nav-login:hover {
+    background-color: var(--hover-dark);
+    text-decoration: none;
+}
+
+.nav-carrito {
+    padding: 25px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-carrito:hover {
+    background-color: var(--hover-dark);
+    text-decoration: none;
+}
+
+.nav-right a:hover {
+    background-color: var(--hover-dark);
+    text-decoration: none;
+    border-radius: 0;
+}
+
+
+/* ===================================
+   ESTILOS DE FOOTER
+   =================================== */
+
+/* Footer */
+footer{
+    background: var(--page-bg);    
+    color: var(--black);
+    text-align:center;
+    padding:30px 20px;
+    margin-top:0;
+    position:relative;
+}
+
+footer::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:80px;
+    right:80px;
+    height:3px;
+    background: var(--header-blue);
+}
+
+footer p{ margin:10px 0; }
+footer a{ color: var(--header-blue); text-decoration:none; }
+footer a:hover{ text-decoration:underline; }
+
+footer a[aria-label="Facebook Pizzeria ABCG"]{
+    color:#1877F2;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    transition:color 0.2s ease, transform 0.2s ease;
+}
+
+footer a[aria-label="Facebook Pizzeria ABCG"] svg{
+    transition:transform 0.2s ease;
+}
+
+footer a[aria-label="Facebook Pizzeria ABCG"]:hover{
+    color:#0F5CC0;
+    text-decoration:none;
+    transform:translateY(-1px);
+}
+
+footer a[aria-label="Facebook Pizzeria ABCG"]:hover svg{
+    transform:scale(1.08);
+}
+
+footer a[aria-label="WhatsApp Pizzeria ABCG"]{
+    color:#25D366;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    transition:color 0.2s ease, transform 0.2s ease;
+}
+
+footer a[aria-label="WhatsApp Pizzeria ABCG"] svg{
+    transition:transform 0.2s ease;
+}
+
+footer a[aria-label="WhatsApp Pizzeria ABCG"]:hover{
+    color:#1EA952;
+    text-decoration:none;
+    transform:translateY(-1px);
+}
+
+footer a[aria-label="WhatsApp Pizzeria ABCG"]:hover svg{
+    transform:scale(1.08);
+}
+
+/* ===================================
+   ESTILOS RESPONSIVOS - TABLETS
+   =================================== */
+
+@media (max-width: 768px) {
+    header {
+        padding: 0 12px;
+    }
+
+    nav ul {
+        flex-wrap: nowrap;
+    }
+
+    .logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    nav li:first-child {
+        margin-right: 10px;
+    }
+
+    .nav-menu {
+        padding: 20px 10px;
+        font-size: 0.88rem;
+        letter-spacing: 0.04rem;
+    }
+
+    .nav-login {
+        padding: 20px 10px;
+        font-size: 0.88rem;
+    }
+
+    .nav-carrito {
+        padding: 18px 10px;
+        font-size: 1.3em;
+    }
+
+    footer::before {
+        left: 40px;
+        right: 40px;
+    }
+}
+
+/* ===================================
+   ESTILOS RESPONSIVOS - CELULARES
+   =================================== */
+
+@media (max-width: 480px) {
+    header {
+        padding: 0 6px;
+    }
+
+    nav {
+        position: relative;
+    }
+
+    nav ul {
+        justify-content: space-between;
+        position: relative;
+        min-height: 60px;
+    }
+
+    /* Logo visible y de tamaño medio en móvil */
+    .logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .nav-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        z-index: 3;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        margin-right: auto;
+        z-index: 2;
+    }
+
+    .hamburger-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav li:first-child {
+        margin-right: 0;
+    }
+
+    /* Ocultar enlaces de texto para no saturar la barra */
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-login {
+        display: none;
+    }
+
+    .nav-carrito {
+        padding: 16px 10px;
+        font-size: 1.4em;
+    }
+
+    .nav-right {
+        margin-left: auto;
+        z-index: 2;
+    }
+
+    .mobile-dropdown.show {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--header-blue);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    footer::before {
+        left: 20px;
+        right: 20px;
+    }
+}
+
+/* ===================================
+   ESTILOS PARA PESTAÑAS DE PIZZAS
+   =================================== */
+
+.pizza-tabs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 0.75rem 2rem;
+    border: 2px solid #ff6b6b;
+    background: transparent;
+    color: #ff6b6b;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: #ff6b6b;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.hidden {
+    display: none;
+}
